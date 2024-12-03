@@ -30,7 +30,7 @@ export default class Carrito{
         }
     }
     calcularTotalCarrito(){
-        return this.productos.reduce( (total,producto) => total + producto.calcularTotal(), 0)
+        return this.productos.reduce((total,producto) => total + producto.calcularTotal(), 0)
     }
 
     guardarLocalStorage(){
@@ -44,8 +44,10 @@ export default class Carrito{
         const datosCarrito = JSON.parse(localStorage.getItem("carrito"));
 
         if(datosCarrito){
-            this.productos = datosCarrito.map((producto)=> new Producto(producto.nombre,producto.cantidad,producto.precio));
-        }
+            this.productos = datosCarrito.map(
+                (producto)=> 
+                    new Producto(producto.nombre,producto.cantidad,producto.precio));
+        };
 
         // localStorage.hasOwnProperty("carrito")
         // ? localStorage.getItem
